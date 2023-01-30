@@ -1,7 +1,13 @@
-import "./App.css";
+import './App.css';
 
-function App() {
-  return <div className="App">FOO</div>;
-}
+import PokemonsList from './components/pokemonsList';
+
+const App = () => {
+  return (
+    <div className="App">
+      <PokemonsList />
+    </div>
+  );
+};
 
 export default App;
