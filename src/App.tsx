@@ -1,11 +1,10 @@
 import './App.css';
-
-import PokemonsList from './components/pokemonsList';
+import PokemonsPage from './pages/Pokemons';
 
 const App = () => {
   return (
     <div className="App">
-      <PokemonsList />
+      <PokemonsPage />
     </div>
   );
 };

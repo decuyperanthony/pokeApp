@@ -1,31 +1,20 @@
+import { Pokemons } from 'hooks/usePokemons';
 import { FC } from 'react';
-import useSWR from 'swr';
-import fetcher from '../service/config';
 
-type Results = {
-  name: string;
-  url: string;
+type Props = {
+  pokemons?: ReadonlyArray<Pokemons>;
 };
 
-type ResPokeAPI = {
-  ok: true;
-  data: {
-    count: number;
-    previous: string | null;
-    next: string | null;
-    results: ReadonlyArray<Results>;
-  };
-};
-
-const PokemonsList: FC = () => {
-  const { data: res, error, isLoading } = useSWR<ResPokeAPI>('/pokemons', fetcher);
-  if (error) return <>error</>;
-  if (isLoading) return <>isLoading...</>;
-
+const PokemonsList: FC<Props> = ({ pokemons }) => {
   return (
-    <div>
-      {res?.data.results.map(({ name }) => (
-        <div key={'pokemon_' + name}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        border: '1px solid black',
+      }}>
+      {pokemons?.map(({ name }) => (
+        <div style={{ marginRight: 8 }} key={'pokemon_' + name}>
           <p style={{ color: 'white' }}>{name}</p>
         </div>
       ))}
