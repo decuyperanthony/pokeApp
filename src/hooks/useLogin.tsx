@@ -74,7 +74,11 @@ const useLogin = (): {
     instance()
       .post(LOGIN_URL, body)
       .then((res) => {
-        setUser({ isLogged: res.data.ok, user: res.data.user, isLoaded: true });
+        setUser({
+          isLogged: res.data.ok,
+          user: res.data.user,
+          isLoaded: false,
+        });
         navigate(POKEMONS_PATH);
       })
       .catch((e) => {

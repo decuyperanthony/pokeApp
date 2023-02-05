@@ -1,14 +1,23 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Alert, Box, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab/';
 
-import { HEIHGT_HEADER } from '../components/HeaderAppBar';
+import { useAuthContext } from '../context/AuthContext';
 import useLogin from '../hooks/useLogin';
+import { HEIHGT_HEADER } from '../components/HeaderAppBar';
+import { POKEMONS_PATH } from '../router/constants';
 
 const Login: FC = () => {
+  const navigate = useNavigate();
+  const { user } = useAuthContext();
   const { onInputsChange, onSubmit, email, password, isLoading, errorAPI } =
     useLogin();
+
+  useEffect(() => {
+    if (user.isLogged && user.isLoaded) navigate(POKEMONS_PATH);
+  }, [user]);
 
   return (
     <Box

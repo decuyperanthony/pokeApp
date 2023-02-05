@@ -21,8 +21,6 @@ const HeaderAppBar: FC = () => {
       });
   };
 
-  console.log('user :>> ', user);
-
   return (
     <Stack
       justifyContent="space-between"

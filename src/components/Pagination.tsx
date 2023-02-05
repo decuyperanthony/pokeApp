@@ -52,10 +52,12 @@ const Pagination: FC<Props> = ({
       </Stack>
 
       <MUIPagination
+        siblingCount={0}
         onChange={(_, value) => onIndexPaginationClick(value)}
         variant="outlined"
         count={totalPages}
         page={page}
+        size="small"
       />
     </Stack>
   );
