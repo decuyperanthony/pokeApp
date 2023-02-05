@@ -1,7 +1,7 @@
 import { CircularProgress, Grid, Stack } from '@mui/material';
 import { Pokemon } from 'Models/pokemon';
 import { FC } from 'react';
-import PokemonItem from './PokemonItem';
+import PokemonCardItem from './PokemonCardItem';
 
 type Props = {
   pokemons?: ReadonlyArray<Pokemon>;
@@ -13,7 +13,7 @@ const PokemonsList: FC<Props> = ({ pokemons, isLoading }) => {
     <Stack>
       {isLoading && (
         <Stack
-          sx={{ backdropFilter: 'blur(2px)' }}
+          sx={{ backdropFilter: 'blur(3px)' }}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -27,7 +27,7 @@ const PokemonsList: FC<Props> = ({ pokemons, isLoading }) => {
       <Grid container spacing={4} p={2}>
         {pokemons?.map((pokemon) => (
           <Grid key={'pokemon_' + pokemon.name} item xs={12} sm={6} md={4}>
-            <PokemonItem pokemon={pokemon} />
+            <PokemonCardItem pokemon={pokemon} />
           </Grid>
         ))}
       </Grid>

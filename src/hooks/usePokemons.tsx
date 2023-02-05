@@ -1,5 +1,6 @@
 import { Pokemon } from 'Models/pokemon';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { POKEMON_URL } from '../service/endPoint';
 import useSWR from 'swr';
 import fetcher from '../service/config';
 
@@ -12,8 +13,6 @@ type ResPokeAPI = {
     results: ReadonlyArray<Pokemon>;
   };
 };
-
-const FETCH_POKEMON_URL = '/pokemons';
 
 const usePokemons = () => {
   const [limit, setLimit] = useState(25);
@@ -30,7 +29,7 @@ const usePokemons = () => {
     data: res,
     error,
     isLoading,
-  } = useSWR<ResPokeAPI>(FETCH_POKEMON_URL + queryParams, fetcher);
+  } = useSWR<ResPokeAPI>(POKEMON_URL + queryParams, fetcher);
 
   const totalPages = useMemo(
     () => (pokemonsCount ? Math.ceil(pokemonsCount / limit) : 50),

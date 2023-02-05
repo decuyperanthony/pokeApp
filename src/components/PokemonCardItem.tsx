@@ -8,7 +8,7 @@ import { FC } from 'react';
 import { Pokemon } from 'Models/pokemon';
 import { Box, Stack } from '@mui/material';
 
-const PokemonItem: FC<{ pokemon: Pokemon }> = ({
+const PokemonCardItem: FC<{ pokemon: Pokemon }> = ({
   pokemon: {
     name,
     weight,
@@ -21,12 +21,18 @@ const PokemonItem: FC<{ pokemon: Pokemon }> = ({
     <Card sx={{ maxWidth: 345 }}>
       {front_default ? (
         <CardMedia
-          sx={{ height: 200 }}
+          sx={{ height: 200, width: 200, margin: 'auto' }}
           image={front_default}
           title="pokemon images"
         />
       ) : (
-        <Box height={200}>No image ...</Box>
+        <Box
+          height={200}
+          display="flex"
+          alignItems="center"
+          justifyContent="center">
+          No image ...
+        </Box>
       )}
 
       <CardContent>
@@ -53,4 +59,4 @@ const PokemonItem: FC<{ pokemon: Pokemon }> = ({
   );
 };
 
-export default PokemonItem;
+export default PokemonCardItem;

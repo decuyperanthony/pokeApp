@@ -10,6 +10,12 @@
         "plugin:prettier/recommended"
     ],
     "overrides": [
+        {
+            "files": ["*.ts"],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
