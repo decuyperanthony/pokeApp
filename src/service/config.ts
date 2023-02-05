@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 const instance = (): AxiosInstance =>
   axios.create({
-    baseURL: 'http://localhost:5050'
+    baseURL: 'http://localhost:5050',
   });
 
 const fetcher = (url: string) =>

@@ -1,11 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { Pokemon } from 'Models/pokemon';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import useSWR from 'swr';
 import fetcher from '../service/config';
-
-export type Pokemons = {
-  name: string;
-  url: string;
-};
 
 type ResPokeAPI = {
   ok: true;
@@ -13,7 +9,7 @@ type ResPokeAPI = {
     count: number;
     previous: string | null;
     next: string | null;
-    results: ReadonlyArray<Pokemons>;
+    results: ReadonlyArray<Pokemon>;
   };
 };
 
@@ -22,7 +18,8 @@ const FETCH_POKEMON_URL = '/pokemons';
 const usePokemons = () => {
   const [limit, setLimit] = useState(25);
   const [offset, setOffset] = useState(0);
-  const [page, setPages] = useState(1);
+  const [page, setPage] = useState(1);
+  const [pokemonsCount, setPokemonsCount] = useState<number>();
 
   const queryParams = useMemo(
     () => `?limit=${limit}&offset=${offset}`,
@@ -36,18 +33,27 @@ const usePokemons = () => {
   } = useSWR<ResPokeAPI>(FETCH_POKEMON_URL + queryParams, fetcher);
 
   const totalPages = useMemo(
-    () => (res ? Math.ceil(res.data.count / limit) : null),
-    [limit, res]
+    () => (pokemonsCount ? Math.ceil(pokemonsCount / limit) : 50),
+    [limit, pokemonsCount]
   );
 
-  const onIndexPaginationClick = useCallback((n: number) => {
-    setPages(n);
-    setOffset(n === 1 ? 0 : (n - 1) * limit);
-  }, []);
+  const onIndexPaginationClick = useCallback(
+    (n: number) => {
+      setPage(n);
+      setOffset(n === 1 ? 0 : (n - 1) * limit);
+    },
+    [limit]
+  );
 
-  const onChangeLimit = useCallback((val: string) => {
+  const onLimitChange = useCallback((val: string) => {
+    setPage(1);
+    setOffset(0);
     setLimit(parseFloat(val));
   }, []);
+
+  useEffect(() => {
+    if (res?.data.count && !pokemonsCount) setPokemonsCount(res.data.count);
+  }, [res]);
 
   return useMemo(() => {
     return {
@@ -57,7 +63,8 @@ const usePokemons = () => {
       isLoading,
       page,
       onIndexPaginationClick,
-      onChangeLimit,
+      onLimitChange,
+      limit,
     };
   }, [
     totalPages,
@@ -66,7 +73,8 @@ const usePokemons = () => {
     isLoading,
     page,
     onIndexPaginationClick,
-    onChangeLimit,
+    onLimitChange,
+    limit,
   ]);
 };
 

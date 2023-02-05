@@ -1,35 +1,47 @@
 import usePokemons from '../hooks/usePokemons';
 import Pagination from '../components/Pagination';
 import PokemonsList from '../components/PokemonsList';
+import { Box, Stack } from '@mui/material';
+
+export const PAGINATION_HEIGHT_WRAPPER = '50px';
 
 const PokemonsPage = () => {
   const {
     error,
     isLoading,
     res,
-    onChangeLimit,
+    onLimitChange,
     totalPages,
     page,
+    limit,
     onIndexPaginationClick,
   } = usePokemons();
 
   if (error) return <>erreur ...</>;
 
   return (
-    <div className="App">
-      {isLoading ? (
-        <>loader ...</>
-      ) : (
-        <PokemonsList pokemons={res?.data.results} />
-      )}
+    <Stack className="App">
+      <Box
+        position="relative"
+        overflow="auto"
+        height={`calc(100vh - ${PAGINATION_HEIGHT_WRAPPER})`}>
+        <PokemonsList isLoading={isLoading} pokemons={res?.data.results} />
+      </Box>
 
-      <Pagination
-        onChangeLimit={onChangeLimit}
-        onIndexPaginationClick={onIndexPaginationClick}
-        totalPages={totalPages}
-        page={page}
-      />
-    </div>
+      <Stack
+        alignItems="center"
+        justifyContent="center"
+        bgcolor="#F2F2F2"
+        height={PAGINATION_HEIGHT_WRAPPER}>
+        <Pagination
+          onLimitChange={onLimitChange}
+          onIndexPaginationClick={onIndexPaginationClick}
+          totalPages={totalPages}
+          page={page}
+          limit={limit}
+        />
+      </Stack>
+    </Stack>
   );
 };
 
