@@ -1,7 +1,8 @@
+import { Box, Stack } from '@mui/material';
+
 import usePokemons from '../hooks/usePokemons';
 import Pagination from '../components/Pagination';
-import PokemonsList from '../components/PokemonsList';
-import { Box, Stack } from '@mui/material';
+import PoksList from '../components/PoksList';
 import { HEIHGT_HEADER } from '../components/HeaderAppBar';
 
 export const PAGINATION_HEIGHT_WRAPPER = '50px';
@@ -26,7 +27,7 @@ const PokemonsPage = () => {
         position="relative"
         overflow="auto"
         height={`calc(100vh - ${PAGINATION_HEIGHT_WRAPPER} - ${HEIHGT_HEADER})`}>
-        <PokemonsList isLoading={isLoading} pokemons={res?.data.results} />
+        <PoksList isLoading={isLoading} pokemons={res?.data.results} />
       </Box>
 
       <Stack
