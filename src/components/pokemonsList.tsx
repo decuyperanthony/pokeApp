@@ -1,5 +1,5 @@
 import { CircularProgress, Grid, Stack } from '@mui/material';
-import { Pokemon } from 'Models/pokemon';
+import { Pokemon } from '../Models/pokemon';
 import { FC } from 'react';
 import PokemonCardItem from './PokemonCardItem';
 

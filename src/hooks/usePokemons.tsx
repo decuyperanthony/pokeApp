@@ -1,8 +1,8 @@
-import { Pokemon } from 'Models/pokemon';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { POKEMON_URL } from '../service/endPoint';
 import useSWR from 'swr';
 import fetcher from '../service/config';
+import { Pokemon } from '../Models/pokemon';
+import { POKEMON_URL } from '../service/endPoint';
 
 type ResPokeAPI = {
   ok: true;

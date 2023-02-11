@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 
 import Typography from '@mui/material/Typography';
 import { FC } from 'react';
-import { Pokemon } from 'Models/pokemon';
+import { Pokemon } from '../Models/pokemon';
 import { Box, Stack } from '@mui/material';
 
 const PokemonCardItem: FC<{ pokemon: Pokemon }> = ({
