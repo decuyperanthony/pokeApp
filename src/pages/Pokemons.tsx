@@ -22,21 +22,14 @@ const PokemonsPage = () => {
   if (error) return <>erreur ...</>;
 
   return (
-    <Stack>
+    <Stack position="relative">
       <HeaderAppBar />
 
-      <Box position="relative" overflow="auto">
+      <Box>
         <PoksList isLoading={isLoading} pokemons={res?.data.results} />
       </Box>
 
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        bgcolor="#F2F2F2"
-        position="fixed"
-        width="100%"
-        py={1}
-        bottom={0}>
+      <Stack bgcolor="#F2F2F2" position="fixed" width="100%" bottom={0}>
         <Pagination
           onLimitChange={onLimitChange}
           onIndexPaginationClick={onIndexPaginationClick}

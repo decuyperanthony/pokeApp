@@ -5,7 +5,7 @@ import { Stack, Typography, Button } from '@mui/material';
 import { useAuthContext } from '../context/AuthContext';
 import { LOGOUT_URL } from '../service/endPoint';
 
-export const HEIHGT_HEADER = '50px';
+export const HEIHGT_APP_BAR = '50px';
 
 const HeaderAppBar: FC = () => {
   const { user, setUser } = useAuthContext();
@@ -27,7 +27,7 @@ const HeaderAppBar: FC = () => {
       alignItems="center"
       px={2}
       bgcolor="#F2F2F2"
-      height={HEIHGT_HEADER}
+      height={HEIHGT_APP_BAR}
       direction="row">
       {user.user && (
         <>

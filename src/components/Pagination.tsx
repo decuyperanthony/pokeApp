@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   Stack,
 } from '@mui/material';
+import { HEIHGT_APP_BAR } from './HeaderAppBar';
 
 const LIMITS = [25, 50, 75, 100];
 
@@ -31,6 +32,7 @@ const Pagination: FC<Props> = ({
       spacing={2}
       direction="row"
       justifyContent="center"
+      height={HEIHGT_APP_BAR}
       alignItems="center">
       <Stack spacing={2} direction="row" alignItems="center">
         <InputLabel id="limits-select">Limits</InputLabel>

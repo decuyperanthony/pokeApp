@@ -2,6 +2,7 @@ import { CircularProgress, Grid, Stack } from '@mui/material';
 import { Pokemon } from '../Models/pokemon';
 import { FC } from 'react';
 import PokemonCardItem from './PokemonCardItem';
+import { HEIHGT_APP_BAR } from './HeaderAppBar';
 
 type Props = {
   pokemons?: ReadonlyArray<Pokemon>;
@@ -17,7 +18,7 @@ const PokemonsList: FC<Props> = ({ pokemons, isLoading }) => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          height="100%"
+          height={`calc(100vh - ${HEIHGT_APP_BAR})`}
           position="absolute"
           width="100%"
           zIndex={100}>
