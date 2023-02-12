@@ -15,5 +15,6 @@
 body {
   color: black;
   margin: 0;
+  white-space: nowrap;
 }
 
