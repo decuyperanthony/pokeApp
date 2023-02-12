@@ -1,6 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
-const API_URL = 'https://pokeapi-production-5f83.up.railway.app';
-// const API_URL = 'http://localhost:5050';
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:5050'
+    : 'https://pokeapi-production-5f83.up.railway.app';
 
 export const instance = (): AxiosInstance =>
   axios.create({

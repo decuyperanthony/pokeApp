@@ -24,7 +24,7 @@ const PokemonsList: FC<Props> = ({ pokemons, isLoading }) => {
           <CircularProgress />
         </Stack>
       )}
-      <Grid container spacing={4} p={2}>
+      <Grid container pb={8} pt={2} px={2} spacing={4}>
         {pokemons?.map((pokemon) => (
           <Grid key={'pokemon_' + pokemon.name} item xs={12} sm={6} md={4}>
             <PokemonCardItem pokemon={pokemon} />

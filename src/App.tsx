@@ -1,4 +1,3 @@
-import HeaderAppBar from './components/HeaderAppBar';
 import './App.css';
 import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
@@ -12,7 +11,6 @@ const App = () => {
     <div className="App">
       <Router>
         <AuthProvider>
-          <HeaderAppBar />
           <Routes>
             <Route path={LOGIN_PATH} element={<Login />} />
             <Route
