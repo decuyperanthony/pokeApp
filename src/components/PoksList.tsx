@@ -2,6 +2,7 @@ import { CircularProgress, Grid, Stack } from '@mui/material';
 import { Pokemon } from '../Models/pokemon';
 import { FC } from 'react';
 import PokemonCardItem from './PokemonCardItem';
+import { HEIHGT_APP_BAR } from './HeaderAppBar';
 
 type Props = {
   pokemons?: ReadonlyArray<Pokemon>;
@@ -17,14 +18,14 @@ const PokemonsList: FC<Props> = ({ pokemons, isLoading }) => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          height="100%"
+          height={`calc(100vh - ${HEIHGT_APP_BAR})`}
           position="absolute"
           width="100%"
           zIndex={100}>
           <CircularProgress />
         </Stack>
       )}
-      <Grid container spacing={4} p={2}>
+      <Grid container pb={8} pt={2} px={2} spacing={4}>
         {pokemons?.map((pokemon) => (
           <Grid key={'pokemon_' + pokemon.name} item xs={12} sm={6} md={4}>
             <PokemonCardItem pokemon={pokemon} />

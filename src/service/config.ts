@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
-const API_URL = 'https://pokeapi-production-5f83.up.railway.app';
-// const API_URL = 'http://localhost:5050';
+const API_URL = import.meta.env.DEV
+  ? 'http://localhost:5050'
+  : import.meta.env.VITE_API_URL;
 
 export const instance = (): AxiosInstance =>
   axios.create({
